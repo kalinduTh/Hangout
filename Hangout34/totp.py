@@ -5,7 +5,7 @@ import struct
 import time
 
 
-secret = "DRSXI2L="
+secret = "DRSXI2LO"
 
 def generate_TOTP():
 
@@ -19,8 +19,8 @@ def generate_TOTP():
 
     truncated_hash = hash[offset:offset+4]
 
-    code = str(struct.unpack(">I", truncated_hash)[0] & 0x7FFFFFFF)
-    totp = code[0:6]
+    code = struct.unpack(">I", truncated_hash)[0] & 0x7FFFFFFF
+    totp = str(code % 100000).zfill(6)
 
     return totp
 
