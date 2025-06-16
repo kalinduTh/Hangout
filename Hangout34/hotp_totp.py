@@ -30,6 +30,8 @@ def generate_HOTP(counter):
 def generate_TOTP():
     # get timestamp from current time
     timestamp = int(time.time()) // 30
+
+    #passing "timestamp" as an argument to generate_HOTP
     return generate_HOTP(timestamp)
 
 
